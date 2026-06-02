@@ -109,7 +109,7 @@ function handleVerify(row) {
   verifyIntegrity(row.id).then(() => { proxy.$modal.msgSuccess("校验完成"); getList() })
 }
 function openOhif(row) {
-  getDicomOhif(row.id).then(res => { window.open(res.msg, "_blank") })
+  getDicomOhif(row.id).then(res => { window.open(res.data, "_blank") })
 }
 function handleDownload(row) {
   downloadDicom(row.id).then(blob => { saveAs(blob, row.fileName || `dicom-${row.id}.dcm`) })

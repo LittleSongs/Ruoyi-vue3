@@ -25,8 +25,8 @@
       <el-table-column label="规则名称" prop="ruleName" min-width="180" />
       <el-table-column label="UID类型" prop="uidType" width="130"><template #default="scope"><dict-tag :options="ndt_uid_type" :value="scope.row.uidType" /></template></el-table-column>
       <el-table-column label="根类型" prop="rootType" width="150"><template #default="scope"><dict-tag :options="ndt_uid_root_type" :value="scope.row.rootType" /></template></el-table-column>
-      <el-table-column label="UID Root" prop="uidRoot" min-width="220" :show-overflow-tooltip="true" />
-      <el-table-column label="后缀模式" prop="suffixPattern" min-width="190" :show-overflow-tooltip="true" />
+      <el-table-column label="UID Root (自定义)" prop="uidRoot" min-width="220" :show-overflow-tooltip="true" />
+      <el-table-column label="后缀模式 (自定义)" prop="suffixPattern" min-width="190" :show-overflow-tooltip="true" />
       <el-table-column label="启用" prop="enabled" width="80" align="center"><template #default="scope">{{ scope.row.enabled === '1' ? '是' : '否' }}</template></el-table-column>
       <el-table-column label="操作" width="220" align="center" fixed="right">
         <template #default="scope">
@@ -46,7 +46,7 @@
           <el-col :span="12"><el-form-item label="根类型" prop="rootType"><el-select v-model="form.rootType" style="width: 100%"><el-option v-for="dict in ndt_uid_root_type" :key="dict.value" :label="dict.label" :value="dict.value" /></el-select></el-form-item></el-col>
         </el-row>
         <el-form-item label="UID Root"><el-input v-model="form.uidRoot" placeholder="自定义Root时填写" /></el-form-item>
-        <el-form-item label="后缀模式"><el-input v-model="form.suffixPattern" placeholder="{type}.{timestamp}.{random}" /></el-form-item>
+        <el-form-item label="后缀模式"><el-input v-model="form.suffixPattern" placeholder="{type}.{timestamp}.{random}" /><div class="form-tip">必须包含至少一个{random}, 示例：xxxx.{random}</div></el-form-item>
         <el-form-item label="启用"><el-switch v-model="form.enabled" active-value="1" inactive-value="0" /></el-form-item>
         <el-form-item label="备注"><el-input v-model="form.remark" type="textarea" :rows="3" /></el-form-item>
       </el-form>
@@ -60,6 +60,7 @@
 
 <script setup name="NdtUidRule">
 import { listUidRule, getUidRule, addUidRule, updateUidRule, delUidRule, generateUid } from "@/api/ndt/uidRule"
+
 
 const { proxy } = getCurrentInstance()
 const { ndt_uid_type, ndt_uid_root_type } = useDict("ndt_uid_type", "ndt_uid_root_type")

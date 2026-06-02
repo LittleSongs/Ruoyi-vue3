@@ -25,7 +25,7 @@
       <el-table-column type="selection" width="50" align="center" />
       <el-table-column label="任务ID" prop="taskId" width="90" align="center" />
       <el-table-column label="任务编号" prop="taskNo" min-width="140" :show-overflow-tooltip="true" />
-      <el-table-column label="SOPInstanceUID" prop="sopInstanceUid" min-width="240" :show-overflow-tooltip="true" />
+      <el-table-column label="SOPInstanceUID" prop="sopInstanceUID" min-width="240" :show-overflow-tooltip="true" />
       <el-table-column label="缺陷类型" prop="defectType" min-width="120" />
       <el-table-column label="缺陷等级" prop="defectLevel" width="100" align="center" />
       <el-table-column label="结论" prop="conclusion" min-width="180" :show-overflow-tooltip="true" />
